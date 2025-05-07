@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ca">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Mini‑Quiz XML</title>
+
+		<!-- ────────────────  CSS in‑line  ──────────────── -->
+		<style>
+			/* Reset bàsic */
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: system-ui, sans-serif;
+				background: #f0f4f8;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				min-height: 100vh;
+				padding: 1rem;
+			}
+
+			/* Contenidor principal */
+			.quiz {
+				background: #fff;
+				padding: 2rem;
+				border-radius: 1rem;
+				box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+				max-width: 420px;
+				width: 100%;
+			}
+
+			h1 {
+				margin-top: 0;
+				text-align: center;
+				font-size: 1.5rem;
+			}
+
+			.pregunta {
+				margin: 1rem 0;
+				font-weight: 600;
+			}
+
+			/* Opcions / botons */
+			.opcions {
+				display: flex;
+				flex-direction: column;
+				gap: 0.5rem;
+			}
+
+			.opcio {
+				padding: 0.75rem 1rem;
+				font-size: 1rem;
+				border: none;
+				border-radius: 0.5rem;
+				cursor: pointer;
+				transition: transform 0.1s;
+			}
+
+			.opcio:hover {
+				transform: translateY(-1px);
+			}
+
+			.opcio:disabled {
+				opacity: 0.6;
+				cursor: default;
+			}
+
+			/* Retroalimentació */
+			.feedback {
+				margin-top: 1rem;
+				font-weight: 700;
+				min-height: 1.5rem;
+			}
+
+			.feedback.correcte {
+				color: #2e7d32;
+			}
+			.feedback.incorrecte {
+				color: #c62828;
+			}
+
+			/* Botó “Nova pregunta” */
+			.nova-pregunta {
+				margin-top: 1.5rem;
+				width: 100%;
+				padding: 0.75rem 1rem;
+				font-size: 1rem;
+				background: #1976d2;
+				color: #fff;
+				border: none;
+				border-radius: 0.5rem;
+				cursor: pointer;
+				transition: background 0.1s;
+			}
+
+			.nova-pregunta:hover {
+				background: #1565c0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<main class="quiz">
+			<h1>Mini‑Quiz: Tecnologies XML</h1>
+
+			<!-- Pregunta -->
+			<section id="pregunta" class="pregunta"></section>
+
+			<!-- Botons d'opcions -->
+			<div id="opcions" class="opcions"></div>
+
+			<!-- Retroalimentació -->
+			<div id="feedback" class="feedback"></div>
+
+			<!-- Botó per generar nova pregunta -->
+			<button id="novaPregunta" class="nova-pregunta">Nova pregunta</button>
+		</main>
+
+		<!-- ────────────────  JavaScript in‑line  ──────────────── -->
+		<script>
+			/* ------------------------------------------------------------------ */
+			/* 1. Banc de preguntes sobre tecnologies XML                          */
+			/* ------------------------------------------------------------------ */
+			const preguntasXML = [
+				{
+					pregunta: "Què signifiquen les sigles XML?",
+					opciones: [
+						"eXtensible Markup Language",
+						"Example Markup Language",
+						"Xtreme Mail Language",
+					],
+					correcta: 0,
+				},
+				{
+					pregunta: "Quina és la funció principal d'un DTD en XML?",
+					opciones: [
+						"Validar l'estructura del document",
+						"Transformar XML a HTML",
+						"Definir espais de noms (namespaces)",
+					],
+					correcta: 0,
+				},
+				{
+					pregunta: "XSD és un estàndard que serveix per…",
+					opciones: [
+						"Formatejar XML com fulls de càlcul",
+						"Descriure l'estructura i els tipus de dades d'un XML",
+						"Xifrar elements confidencials d'un XML",
+					],
+					correcta: 1,
+				},
+				{
+					pregunta:
+						"Quina tecnologia s'utilitza per transformar XML a altres formats (HTML, TXT…)?",
+					opciones: ["XPath", "SOAP", "XSLT"],
+					correcta: 2,
+				},
+				{
+					pregunta: "XPath s'empra per…",
+					opciones: [
+						"Seleccionar nodes o fragments dins d'un document XML",
+						"Signar digitalment un XML",
+						"Serialitzar XML a binari",
+					],
+					correcta: 0,
+				},
+				{
+					pregunta:
+						"Quin protocol basat en XML defineix un mode estàndard d'intercanvi de missatges web?",
+					opciones: ["SOAP", "RSS", "SVG"],
+					correcta: 0,
+				},
+				{
+					pregunta: "RSS i Atom són exemples de…",
+					opciones: [
+						"Esquemes de xifrat XML",
+						"Formats de sindicació basats en XML",
+						"Motors de cerca XML",
+					],
+					correcta: 1,
+				},
+				{
+					pregunta: "En un XML, un *namespace* es declara amb l'atribut…",
+					opciones: ["xml:space", "xmlns", "xml:lang"],
+					correcta: 1,
+				},
+				{
+					pregunta:
+						"Quin dels següents models d'anàlisi llegeix un document XML node a node sense carregar‑lo sencer a memòria?",
+					opciones: ["DOM", "SAX", "StAX"],
+					correcta: 1,
+				},
+				{
+					pregunta: "Dins d'una secció CDATA el text es interpreta com…",
+					opciones: [
+						"Codi JavaScript executable",
+						"Text pla sense parsejar pel processador XML",
+						"Comentaris ignorats pel parser",
+					],
+					correcta: 1,
+				},
+			];
+
+			/* ------------------------------------------------------------------ */
+			/* 2. Funció per obtenir un índex aleatori                             */
+			/* ------------------------------------------------------------------ */
+			function getRandomIndex(arr) {
+				return Math.floor(Math.random() * arr.length);
+			}
+		</script>
+	</body>
+</html>
