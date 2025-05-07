@@ -31,4 +31,20 @@ const preguntasXML = [
   }
 
   function mostrarPreguntaAleatoria() {
-    console.log("S'ha clicat el botó 'Nova pregunta'");
+    console.log("S'ha clicat el botó 'Nova pregunta'")};
+
+    const index = getRandomIndex(preguntasXML);
+    const preguntaActual = preguntasXML[index];
+
+    if{
+        feedbackElem.textContent = "Correcte!";
+        feedbackElem.classList.add("correcte");
+      } else {
+        feedbackElem.textContent = "Incorrecte";
+        feedbackElem.classList.add("incorrecte");
+      }
+    });
+
+    mostrarPreguntaAleatoria();
+
+    novaPreguntaBtn.addEventListener("click", mostrarPreguntaAleatoria);
